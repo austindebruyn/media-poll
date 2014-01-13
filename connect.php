@@ -1,6 +1,6 @@
 <?php
 	
-	include 'functions.php';
+	require_once 'functions.php';
 
 	//Connect to the database
 	$host = "localhost";
