@@ -1,4 +1,9 @@
-<!doctype HTML>
+<?php
+	include 'connect.php';
+
+
+?>
+<!DOCTYPE HTML>
 <html lang="en-US">
 	<head>
 	</head>
