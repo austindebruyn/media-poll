@@ -21,16 +21,23 @@
 
 	json_decode($output);
 
-	$result = json_decode($output, true); //adding true, objects is converted to array 
-	$viewCount = $result['entry']['yt$statistics']['viewCount']; //view count
-	$dislikes = $result['entry']['yt$rating']['numDislikes']; //dislikes
-	$likes = $result['entry']['yt$rating']['numLikes']; //likes
-	$title = $result['entry']['title']['$t']; //name
+	$result 		= json_decode($output, true); //adding true, objects is converted to array 
+	$viewCount 		= $result['entry']['yt$statistics']['viewCount']; 				//view count
+	$dislikes 		= $result['entry']['yt$rating']['numDislikes']; 				//dislikes
+	$likes 			= $result['entry']['yt$rating']['numLikes']; 					//likes
+	$title 			= $result['entry']['title']['$t']; 								//name
+	$smallthumb 	= $result['entry']['media$group']['media$thumbnail'][0]['url']; //thumbnail
+	$bigthumb 		= $result['entry']['media$group']['media$thumbnail'][1]['url']; //thumbnail
+
+	//print("<pre>");
+	//print_r($result);
+	//print("</pre>");
 
 	$sql = "SELECT * from votes WHERE vid='".$vid."'";
 	$result = $con->query($sql);
 	if ($result->num_rows < 1) {
-		$sql = "INSERT INTO votes (vid, name, tally) VALUES ('".$vid."', '".$title."', 1)";
+		$sql = 	"INSERT INTO votes (vid, name, tally, smallthumb, bigthumb) ".
+				"VALUES ('$vid', '$title', 1, '$smallthumb', '$bigthumb')";
 		$con->query($sql);
 	}
 	else
