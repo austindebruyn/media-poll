@@ -94,6 +94,7 @@
 	for ($i=0; $i<$totalvotes; $i+=1) {
 
 		$_SESSION['ballotData'][$i] = array(
+				'vid' 			=> $vid[$i],
 				'viewCount' 	=> $viewCount[$i],
 				'dislikes' 		=> $dislikes[$i],
 				'likes' 		=> $likes[$i],
