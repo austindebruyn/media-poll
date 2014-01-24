@@ -1,6 +1,6 @@
 <?php
 	if ($_SESSION['auth'] != TRUE) {
-		header("Location: login.php");
+		header("Location: /admin/login");
 		exit();
 	}
 ?>

@@ -6,7 +6,7 @@
 
 	$_SESSION['confirmcheck'] = 'CONFIRMED';
 
-	require_once 'header.php'; 
+	require_once '../includes/header.php'; 
 ?>
 
 <head>
@@ -19,7 +19,7 @@
 
 </head>
 
-<?php include('messages.php'); ?>
+<?php include('../includes/messages.php'); ?>
 
 <div id="content">
 	<p>Confirm your ballot</p>
@@ -46,8 +46,8 @@
 	?>
 	</p>
 
-	<a href='finalvote.php'>YES this ballot is correct</a><br>
+	<a href='/finalvote.php'>YES this ballot is correct</a><br>
 	<a href="/">GO BACK and edit my ballot</a>
 </div>
 
-<?php require_once 'footer.php'; ?>
+<?php require_once '../includes/footer.php'; ?>

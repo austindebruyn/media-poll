@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require_once 'connect.php';
+	require_once 'includes/connect.php';
 
 	$url = array("", "", "", "", "");
 
@@ -106,6 +106,6 @@
 			);
 	}
 
-	header("Location: confirm.php");
+	header("Location: /confirm");
 	exit(0);
 ?>

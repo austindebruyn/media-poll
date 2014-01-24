@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	require_once 'forceadmin.php';
-	require_once 'header.php';
+	require_once '../../includes/forceadmin.php';
+	require_once '../../includes/header.php';
 ?>
 
 <head>
@@ -108,4 +108,4 @@
 ?>
 </div>
 
-<?php require_once 'footer.php'; ?>
+<?php require_once '../../includes/footer.php'; ?>
