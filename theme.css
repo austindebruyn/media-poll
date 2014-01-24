@@ -9,10 +9,11 @@
 }
 
 #content {
+	position: relative;
+	top: 90px;
 	width: 600px;
 	margin: 0 auto;
 	padding: 5px;
-	min-height: 400px;
 	background-color: #c6dcf4;
 	border-radius: 5px;
 	text-align: center;
