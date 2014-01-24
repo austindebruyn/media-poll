@@ -1,4 +1,8 @@
-<?php require_once 'header.php'; ?>
+<?php
+	session_start();
+	require_once 'forceadmin.php';
+	require_once 'header.php';
+?>
 
 <head>
 	<style type="text/css">
