@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require_once 'connect.php';
+	require_once 'includes/connect.php';
 
 	if ($_SESSION['confirmcheck'] !== "CONFIRMED")
 		die("<h1>eror</h1>");
@@ -31,6 +31,6 @@
 		}
 	}
 
-	header("Location: thanks.php");
+	header("Location: /thanks");
 	exit();
 ?>
