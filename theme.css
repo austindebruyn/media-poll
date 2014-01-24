@@ -1,0 +1,35 @@
+
+.pageerror {
+	margin: 0 auto;
+	width: 500px;
+	text-align: center;
+	font-family: 'Roboto Condensed', Arial, Tahoma;
+	background-color: #feb1c9;
+	color: black;
+}
+
+#content {
+	width: 600px;
+	margin: 0 auto;
+	padding: 5px;
+	min-height: 400px;
+	background-color: #c6dcf4;
+	border-radius: 5px;
+	text-align: center;
+	font-family: 'Roboto Condensed', Arial, Tahoma;
+}
+
+#content input[type="text"] {
+	width: 440px;
+	height: 45px;
+	margin: 7px auto 7px auto;
+	clear: both;
+
+	border: 2px solid #114;
+	border-radius: 5px;
+
+	text-align: center;
+	font-size: 1.4em;
+	color: #111;
+	font-family: 'Roboto Condensed', Arial, Tahoma;
+}
