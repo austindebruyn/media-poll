@@ -32,10 +32,10 @@
 			border-radius: 5px;
 			padding: 3px;
 			margin: 2px;
-			display: inline-block;
 
 			font-size: 11px;
 			transition: height 0.2s;
+			overflow: hidden;
 		}
 
 		#results .vid:hover {
@@ -46,16 +46,23 @@
 			width: 142px;
 			height: 100%;
 			display: inline-block;
-			overflow: hidden;
 		}
 
 		#results .vid .thumb img {
 			width: 100%;
 		}
 
-		#results .vid .cdiv {
+		#results .vid .text {
+			width: 648px;
+			height: 80px;
+			display: inline-block;
+			overflow: hidden;
+		}
+
+		#results .vid .text .cdiv {
+			position: relative;
 			width: 400px;
-			height: 74px;
+			height: 40px;
 			display: inline-block;
 			font-size: 1.4em;
 			margin: 3px 3px 0 3px;
@@ -66,9 +73,10 @@
 			vertical-align: top;
 		}
 
-		#results .vid .rdiv {
+		#results .vid .text .rdiv {
+			position: relative;
 			width: 236px;
-			height: 74px;
+			height: 40px;
 			display: inline-block;
 			font-size: 1.4em;
 			margin: 3px 3px 0 3px;
@@ -80,8 +88,76 @@
 			vertical-align: top;
 		}
 
+		#results .vid .text .bot {
+			color: #999999;
+			position: relative;
+			bottom: 2px;
+			width: 648px;
+			height: 40px;
+			margin: 20px 3px 0 3px;
+			font-size: 1.0em;
+			font-family: 'Roboto Condensed', Tahoma;
+
+			vertical-align: bottom;
+		}
+
+		#results .vid .text .bot .opt {
+			cursor: pointer;
+			color: inherit;
+			display: inline-block;
+			position: relative;
+		}
+
+		#results .vid .text .bot .opt:hover {
+			color: red;
+		}
+
+		#results .vid .text .bot .opt .popup {
+			width: 220px;
+			height: 17px;
+
+			background-color: #eee;
+			border: 1px #ddd solid;
+			border-radius: 4px;
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+
+			font-size: 1.2em;
+			text-align: center;
+			color: #454545;
+
+			position: absolute;
+			top: -21px;
+			left: 50%;
+			margin-left: -110px;
+			padding-bottom: 4px;
+
+			opacity: 0;
+			visibility: hidden;
+			cursor: auto;
+
+			transition: opacity 0.2s;
+			-moz-transition: opacity 0.2s;
+			-webkit-transition: opacity 0.2s;
+		}
+
+		#results .vid .text .bot .opt:hover .popup {
+			visibility: visible;
+			opacity: 1;
+		}
+		#results .vid .text .bot .opt .popup:hover {
+			visibility: visible;
+			opacity: 1;
+		}
+
+		#results .vid .text .bot .opt .popup .delete {
+			color: blue;
+		}
+
 	</style>
 </head>
+
+<?php include('../../includes/messages.php'); ?>
 
 <div id="results">
 <?php
@@ -93,13 +169,25 @@
 
 		print("<div class='vid'>");
 			print("<div class='thumb'><img src='".$row['bigthumb']."' /></div>");
-			print("<div class='cdiv'><strong><a href='http://youtube.com/watch?v=".$row['vid'].
-				"''>".$row['name']."</strong></a><br>");
-			print("".$row['artist']."</div>");
+			print("<div class='text'>");
+				print("<div class='cdiv'><strong><a href='http://youtube.com/watch?v=".$row['vid'].
+					"''>".$row['name']."</strong></a><br>");
+				print("".$row['artist']."</div>");
 
-			print("<div class='rdiv'>");
-				print("<strong>#$i</strong><br>");
-				print("".$row['tally']." votes<br>");
+				print("<div class='rdiv'>");
+					print("<strong>#$i</strong><br>");
+					print("".$row['tally']." votes<br>");
+				print("</div>");
+
+				print("<div class='bot'>");
+					print(number_format($row['views'])." views &#183; ");
+					print("Added to database on ".stringDate($row['dAdded'])." &#183; ");
+					print("Last voted for on ".stringDate($row['dLastvoted'])." &#183; ");
+					//print("<a href='/admin/edit/?vid=".$row['vid']."'>Options for this video</a>");
+					print("<div class='opt'>Options for this video");
+					print("<div class='popup'> <a href='delete.php?vid=".$row['vid']."' class='delete'>Delete</a>");
+					print(" &#183 Edit tally &#183 Rename </div></div>");
+				print("</div>");
 			print("</div>");
 		print("</div>");
 
@@ -107,5 +195,13 @@
 	}
 ?>
 </div>
+
+<head>
+	<script type="text/javascript">
+	    $('.delete').on('click', function () {
+	        return confirm('Are you sure? Dont mess it all up...');
+	    });
+	</script>
+</head>
 
 <?php require_once '../../includes/footer.php'; ?>

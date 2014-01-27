@@ -10,6 +10,7 @@
 	for ($i=0; $i<$totalvotes; $i+=1) {
 		$vid 			= $_SESSION['ballotData'][$i]['vid'];
 		$title 			= $_SESSION['ballotData'][$i]['title'];
+		$viewCount 		= $_SESSION['ballotData'][$i]['viewCount'];
 		$smallthumb 	= $_SESSION['ballotData'][$i]['smallthumb'];
 		$bigthumb 		= $_SESSION['ballotData'][$i]['bigthumb'];
 		$artist 		= $_SESSION['ballotData'][$i]['artist'];
@@ -18,8 +19,10 @@
 		$sql = "SELECT * from `votes` WHERE `vid`='".$_SESSION['ballotData'][$i]['vid']."'";
 		$result = $con->query($sql);
 		if ($result->num_rows < 1) {
-			$sql = 	"INSERT INTO votes (vid, name, tally, smallthumb, bigthumb, artist, artisturl) ".
-					"VALUES ('$vid', '$title', 1, '$smallthumb', '$bigthumb', '$artist', '$artisturl')";
+			$sql = 	"INSERT INTO votes 	(`vid`, `name`, `tally`, `views`, `smallthumb`, `bigthumb`,
+										 `artist`, `artisturl`, `dAdded`, `dLastvoted`) ".
+					"VALUES 	('$vid', '$title', 1, $viewCount, '$smallthumb', '$bigthumb',
+								'$artist', '$artisturl', CURDATE(), CURDATE())";
 			$con->query($sql);
 		}
 		else
