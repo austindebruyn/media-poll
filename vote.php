@@ -38,12 +38,12 @@
 		$vid[$i] = "";
 
 		//Strip from url format 1: http://youtube.com/watch?v=xxx
-		if (preg_match("/^(?:http:\/\/)?(?:www\.)?youtube.com\/watch\?(?=.*v=[a-zA-Z0-9_-]{11})(?:\S+)?$/",
+		if (preg_match("/^(?:http[s]?:\/\/)?(?:www\.)?youtube.com\/watch\?(?=.*v=[a-zA-Z0-9_-]{11})(?:\S+)?$/",
 							$url[$i], $matches))
 			$vid[$i] = substr($url[$i], strpos($url[$i], "v=")+2, 11);
 
 		//Strip from url format 1: http://youtube.com/watch?v=xxx
-		else if (preg_match("/^(?:http:\/\/)?(?:www\.)?youtu.be\/([a-zA-Z0-9_-]{11})(?:\S+)?$/",
+		else if (preg_match("/^(?:http[s]?:\/\/)?(?:www\.)?youtu.be\/([a-zA-Z0-9_-]{11})(?:\S+)?$/",
 							$url[$i], $matches))
 			$vid[$i] = substr($url[$i], strpos($url[$i], ".be")+4, 11);
 	}

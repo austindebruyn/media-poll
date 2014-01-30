@@ -31,7 +31,8 @@
 		else
 		{
 			//Add 1 to the tally already recorded and update
-			$cnt = $result->fetch_assoc()['tally']+1;
+			$fetcher = $result->fetch_assoc();
+			$cnt = $fetcher['tally']+1;
 			$sql = "UPDATE `votes` SET `tally` = $cnt WHERE `vid`='".$vid."'";
 			$con->query($sql);
 		}
