@@ -16,6 +16,9 @@
 		$artist 		= $_SESSION['ballotData'][$i]['artist'];
 		$artisturl 		= $_SESSION['ballotData'][$i]['artisturl'];
 
+		$title = $con->escape_string($title);
+		$artist = $con->escape_string($artist);
+
 		$sql = "SELECT * from `votes` WHERE `vid`='".$_SESSION['ballotData'][$i]['vid']."'";
 		$result = $con->query($sql);
 		if ($result->num_rows < 1) {

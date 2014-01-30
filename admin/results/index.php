@@ -153,7 +153,6 @@
 		#results .vid .text .bot .opt .popup .delete {
 			color: blue;
 		}
-
 	</style>
 </head>
 
@@ -170,7 +169,7 @@
 		print("<div class='vid'>");
 			print("<div class='thumb'><img src='".$row['bigthumb']."' /></div>");
 			print("<div class='text'>");
-				print("<div class='cdiv'><strong><a href='http://youtube.com/watch?v=".$row['vid'].
+				print("<div class='cdiv'><strong><a class='title' vid='".$row['vid']."' href='http://youtube.com/watch?v=".$row['vid'].
 					"''>".$row['name']."</strong></a><br>");
 				print("".$row['artist']."</div>");
 
@@ -186,12 +185,14 @@
 					//print("<a href='/admin/edit/?vid=".$row['vid']."'>Options for this video</a>");
 					print("<div class='opt'>Options for this video");
 					print("<div class='popup'> <a href='delete.php?vid=".$row['vid']."' class='delete'>Delete</a>");
-					print(" &#183 Edit tally &#183 Rename </div></div>");
+					print(" &#183 Edit tally ");
+					print("&#183 <a vidname=\"".htmlspecialchars(stripslashes($row['name']))."\" vid='".$row['vid']."' href='rename.php' class='rename'>Rename</a> </div></div>");
 				print("</div>");
 			print("</div>");
 		print("</div>");
 
 		$i += 1;
+
 	}
 ?>
 </div>
@@ -201,6 +202,38 @@
 	    $('.delete').on('click', function () {
 	        return confirm('Are you sure? Dont mess it all up...');
 	    });
+
+	    $('.rename').on('click', function () {
+
+	    	var ret, def, vid;
+	    	def = $(this).attr('vidname'); //default
+	    	vid = $(this).attr('vid'); //vid
+	    	ret = prompt("Choose a new name for this video:", def);
+
+	    	if (ret == null || ret == def)
+	    		return false;
+
+	    	var result, self;
+	    	self = this;
+	    	result = $.ajax({
+	    		type: 		"POST",
+	    		url: 		'rename.php',
+	    		data:   	"newname="+ret+"&vid="+vid,
+	    		success: 	function(r) {
+	    			switch(r) {
+	    				case -2: alert("Name must be at least 3 characters long."); break;
+	    				case -1: alert("Database error."); break;
+	    				default:
+	    					$("a[class='title'][vid='"+vid+"']").html(ret);
+	    					$(self).attr('vidname', ret);
+	    					break;
+	    		}}
+	    	});
+
+	        return false;
+	    });
+
+	    
 	</script>
 </head>
 
