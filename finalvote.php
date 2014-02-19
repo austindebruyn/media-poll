@@ -39,7 +39,7 @@
 			//Add 1 to the tally already recorded and update
 			$fetcher = $result->fetch_assoc();
 			$cnt = $fetcher['tally']+1;
-			$sql = "UPDATE `votes` SET `tally` = $cnt WHERE `vid`='".$vid."'";
+			$sql = "UPDATE `votes` SET `tally` = $cnt, `dLastvoted`=CURDATE() WHERE `vid`='".$vid."'";
 			$con->query($sql);
 		}
 	}

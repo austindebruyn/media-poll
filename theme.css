@@ -1,7 +1,10 @@
 
 body {
 	background: url('/img/bg.png');
+}
 
+h1 {
+	font-size: 1.1em;
 }
 
 .pageerror {
@@ -15,6 +18,7 @@ body {
 
 #content {
 	position: relative;
+	min-height: 300px;
 	color: #c4c8de;
 	top: 90px;
 	width: 590px;
@@ -32,6 +36,20 @@ body {
 }
 
 #content input[type="text"] {
+	width: 320px;
+	height: 20px;
+	margin: 7px auto 7px auto;
+	clear: both;
+
+	border: 2px solid #191a1b;
+
+	text-align: center;
+	font-size: 0.9em;
+	color: #111;
+	font-family: 'Roboto Condensed', Arial, Tahoma;
+}
+
+#content .autocomplete {
 	width: 320px;
 	height: 20px;
 	margin: 7px auto 7px auto;

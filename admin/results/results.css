@@ -1,15 +1,16 @@
 #results {
 	width: 800px;
+	color: #c4c8de;
 	margin: 0 auto;
 	padding: 5px;
 	min-height: 400px;
-	background-color: #c6dcf4;
+	background-color: #232323;
 	border-radius: 5px;
 }
 
 #results a {
 	text-decoration: none;
-	color: black;
+	color: white;
 }
 
 #results a:hover {
@@ -19,7 +20,7 @@
 #results .vid {
 	width:  790px;
 	height: 44px;
-	background-color: white;
+	background-color: #111;
 	border-radius: 5px;
 	padding: 3px;
 	margin: 2px;
@@ -111,7 +112,7 @@
 
 	font-size: 1.2em;
 	text-align: center;
-	color: #454545;
+	color: #122;
 
 	position: absolute;
 	top: -25px;
@@ -125,6 +126,10 @@
 	transition: opacity 0.2s;
 	-moz-transition: opacity 0.2s;
 	-webkit-transition: opacity 0.2s;
+}
+
+#results .vid .text .bot .opt .popup a {
+	color: #112;
 }
 
 #results .vid .text .bot .opt:hover .popup {

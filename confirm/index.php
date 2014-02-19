@@ -12,7 +12,7 @@
 <head>
 	<style type="text/css">
 		.thumb {
-			width: 116px;
+			width: 110px;
 			margin: 2px;
 		}
 	</style>

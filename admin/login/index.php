@@ -14,7 +14,7 @@
 		You need to be an administrator of this site to continue.<br>
 		<input type="password" name="pass">
 		<br>
-		<input type="submit" value="Authorize">
+		<input type="submit" value="">
 	</form>
 </div>
 
