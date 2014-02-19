@@ -46,4 +46,20 @@
 		return $dt->format('F j, Y');
 	}
 
+
+	/* getVideoNames
+	 * returns an array of all video titles
+	 * in the database
+	 */
+	function getVideoNames() {
+		global $con;
+
+		$sql = "SELECT `name`, `vid` FROM `votes`";
+		$result = $con->query($sql);
+		$list = array();
+		while ($fetcher = $result->fetch_row())
+			array_push($list, array(str_replace('"', "'", $fetcher[0]), $fetcher[1]));
+		return $list;
+	}
+
 ?>

@@ -34,10 +34,22 @@
 	}
 	*/
 
+	//More error checking
 	if ($totalvotes < 1) {
 		$_SESSION['pageerror'] = "You have to at least vote for something.";
 		header("Location: /");
 		exit();
+	}
+
+	//Convert any titles to VIDs
+	$list = getVideoNames();
+
+	function titleToVID($name) {
+		global $list;
+		foreach ($list as $video)
+			if ($video[0] == $name)
+				return $video[1];
+		return false;
 	}
 
 	//Determine if any of the YouTube links are valid
@@ -53,6 +65,13 @@
 		else if (preg_match("/^(?:http[s]?:\/\/)?(?:www\.)?youtu.be\/([a-zA-Z0-9_-]{11})(?:\S+)?$/",
 							$url[$i], $matches))
 			$vid[$i] = substr($url[$i], strpos($url[$i], ".be")+4, 11);
+
+		else {
+			//Maybe they entered an exact title?
+			$ttv = titleToVID($url[$i]);
+			if ($ttv)
+				$vid[$i] = $ttv;
+		}
 	}
 
 	//Make sure all were valid links
