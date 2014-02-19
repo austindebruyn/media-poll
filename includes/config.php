@@ -16,10 +16,11 @@
 			$this->fetcher = $result->fetch_assoc();
 		}
 
-		function description() 	{return nl2br($this->fetcher['description']);}
-		function minVotes() 	{return $this->fetcher['minVotes']; }
-		function maxVotes() 	{return $this->fetcher['maxVotes']; }
-		function forceMin() 	{return $this->fetcher['forceMin']; }
+		function rawdescription() 	{return $this->fetcher['description'];}
+		function description() 		{return nl2br($this->fetcher['description']);}
+		function minVotes() 		{return $this->fetcher['minVotes']; }
+		function maxVotes() 		{return $this->fetcher['maxVotes']; }
+		function forceMin() 		{return $this->fetcher['forceMin']; }
 	}
 
 	$config = new Config();

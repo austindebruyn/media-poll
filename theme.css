@@ -15,6 +15,7 @@ body {
 
 #content {
 	position: relative;
+	color: #c4c8de;
 	top: 90px;
 	width: 590px;
 	margin: 0 auto;
@@ -27,7 +28,6 @@ body {
 #content #description {
 	width: 400px;
 	margin: 20px auto 20px auto;
-	color: #f4e8fe;
 	font-size: 0.9em;
 }
 
