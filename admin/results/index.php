@@ -39,9 +39,13 @@
 					print("Last voted for on ".stringDate($row['dLastvoted'])." &#183; ");
 					//print("<a href='/admin/edit/?vid=".$row['vid']."'>Options for this video</a>");
 					print("<div class='opt'>Options for this video");
-					print("<div class='popup'> <a href='delete.php?vid=".$row['vid']."' class='delete'>Delete</a> ");
-					print("&#183 <a tally=\"".$row['tally']."\" vid='".$row['vid']."' href='edittally.php' class='edittally'>Edit Tally</a> ");
-					print("&#183 <a vidname=\"".htmlspecialchars(stripslashes($row['name']))."\" vid='".$row['vid']."' href='rename.php' class='rename'>Rename</a> </div></div>");
+					print("<div class='popup'>");
+					print("<img src='/img/fugue/cross-script.png'/>");
+					print("<a href='delete.php?vid=".$row['vid']."' class='delete'>Delete</a> &#183 ");
+					print("<img src='/img/fugue/price-tag--pencil.png'/>");
+					print("<a tally=\"".$row['tally']."\" vid='".$row['vid']."' href='edittally.php' class='edittally'>Edit Tally</a> &#183  ");
+					print("<img src='/img/fugue/ui-text-field-medium.png'/>");
+					print("<a vidname=\"".htmlspecialchars(stripslashes($row['name']))."\" vid='".$row['vid']."' href='rename.php' class='rename'>Rename</a> </div></div>");
 				print("</div>");
 			print("</div>");
 		print("</div>");
