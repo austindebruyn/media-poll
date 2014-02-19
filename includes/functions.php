@@ -22,7 +22,7 @@
 			return true;
 
 		$myip = 	$_SERVER['REMOTE_ADDR'];
-		if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) $myipf = 	$_SERVER['HTTP_X_FORWARDED_FOR'];
+		if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) $myipf = $_SERVER['HTTP_X_FORWARDED_FOR'];
 		$sql = "SELECT `ip` FROM `IPtable` WHERE `ip` = $myip";
 
 		return false;

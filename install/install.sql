@@ -15,3 +15,13 @@ CREATE TABLE `votes` (
 
 	tainted 	BOOLEAN DEFAULT FALSE
 );
+
+CREATE TABLE `config` (
+	description 	VARCHAR(1024),
+
+	minVotes 		INT,
+	maxVotes 		INT,
+	forceMin		BOOLEAN,
+
+	chk			 	BIT UNIQUE DEFAULT 1
+);

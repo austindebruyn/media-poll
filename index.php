@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	require_once 'includes/functions.php';
+	require_once 'includes/config.php';
 
 	if (hasVoted()) {
 		header("Location: /thanks");
@@ -20,8 +21,7 @@
 
 <div id="content">
 	<div id="description">
-	Hey! Welcome to the voting platform. Vote for up to 10 of your favorite videos below, starting with
-	a minimum of 5 votes. Just copy-paste a video URL in the box below!.
+		<?php print $config->description(); ?>
 
 	</div>
 
