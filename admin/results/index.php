@@ -5,152 +5,7 @@
 ?>
 
 <head>
-	<style type="text/css">
-
-		#results {
-			width: 800px;
-			margin: 0 auto;
-			padding: 5px;
-			min-height: 400px;
-			background-color: #c6dcf4;
-			border-radius: 5px;
-		}
-
-		#results a {
-			text-decoration: none;
-			color: black;
-		}
-
-		#results a:hover {
-			color: red;
-		}
-
-		#results .vid {
-			width:  790px;
-			height: 44px;
-			background-color: white;
-			border-radius: 5px;
-			padding: 3px;
-			margin: 2px;
-
-			font-size: 11px;
-			transition: height 0.2s;
-			overflow: hidden;
-		}
-
-		#results .vid:hover {
-			height: 80px;
-		}
-
-		#results .vid .thumb {
-			width: 142px;
-			height: 100%;
-			display: inline-block;
-		}
-
-		#results .vid .thumb img {
-			width: 100%;
-		}
-
-		#results .vid .text {
-			width: 648px;
-			height: 80px;
-			display: inline-block;
-			overflow: hidden;
-		}
-
-		#results .vid .text .cdiv {
-			position: relative;
-			width: 400px;
-			height: 40px;
-			display: inline-block;
-			font-size: 1.4em;
-			margin: 3px 3px 0 3px;
-			font-family: 'Roboto Condensed', Tahoma;
-
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			vertical-align: top;
-		}
-
-		#results .vid .text .rdiv {
-			position: relative;
-			width: 236px;
-			height: 40px;
-			display: inline-block;
-			font-size: 1.4em;
-			margin: 3px 3px 0 3px;
-			font-family: 'Roboto Condensed', Tahoma;
-			text-align: right;
-
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			vertical-align: top;
-		}
-
-		#results .vid .text .bot {
-			color: #999999;
-			position: relative;
-			bottom: 2px;
-			width: 648px;
-			height: 40px;
-			margin: 20px 3px 0 3px;
-			font-size: 1.0em;
-			font-family: 'Roboto Condensed', Tahoma;
-
-			vertical-align: bottom;
-		}
-
-		#results .vid .text .bot .opt {
-			cursor: pointer;
-			color: inherit;
-			display: inline-block;
-			position: relative;
-		}
-
-		#results .vid .text .bot .opt:hover {
-			color: red;
-		}
-
-		#results .vid .text .bot .opt .popup {
-			width: 220px;
-			height: 17px;
-
-			background-color: #eee;
-			border: 1px #ddd solid;
-			border-radius: 4px;
-			-moz-border-radius: 4px;
-			-webkit-border-radius: 4px;
-
-			font-size: 1.2em;
-			text-align: center;
-			color: #454545;
-
-			position: absolute;
-			top: -21px;
-			left: 50%;
-			margin-left: -110px;
-			padding-bottom: 4px;
-
-			opacity: 0;
-			visibility: hidden;
-			cursor: auto;
-
-			transition: opacity 0.2s;
-			-moz-transition: opacity 0.2s;
-			-webkit-transition: opacity 0.2s;
-		}
-
-		#results .vid .text .bot .opt:hover .popup {
-			visibility: visible;
-			opacity: 1;
-		}
-		#results .vid .text .bot .opt .popup:hover {
-			visibility: visible;
-			opacity: 1;
-		}
-
-	</style>
+	<link href="results.css" rel='stylesheet' type="text/css">
 </head>
 
 <?php include('../../includes/messages.php'); ?>
@@ -167,12 +22,15 @@
 			print("<div class='thumb'><img src='".$row['bigthumb']."' /></div>");
 			print("<div class='text'>");
 				print("<div class='cdiv'><strong><a class='title' vid='".$row['vid']."' href='http://youtube.com/watch?v=".$row['vid'].
-					"''>".$row['name']."</strong></a><br>");
+					"''>");
+				print($row['name']."</strong></a><br>");
 				print("".$row['artist']."</div>");
 
 				print("<div class='rdiv'>");
 					print("<strong>#$i</strong><br>");
 					print("".$row['tally']." votes<br>");
+				if ($row['tainted'])
+					print("<img title='This tally was edited by hand.' src='/img/fugue/skull.png'/>");
 				print("</div>");
 
 				print("<div class='bot'>");

@@ -9,5 +9,4 @@
 
 <?php
 	require_once '../includes/footer.php';
-	session_destroy();
 ?>

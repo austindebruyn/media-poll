@@ -2,6 +2,13 @@
 	session_start();
 	require_once 'includes/connect.php';
 
+	//Make sure you aren't trying to double vote
+	if (hasVoted()) {
+		header("Location: /thanks");
+		exit();
+	}
+
+
 	$url = array("", "", "", "", "");
 
 	for ($i=1; $i<=5; $i+=1)

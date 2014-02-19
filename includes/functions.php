@@ -1,5 +1,7 @@
 <?
-//Gracefully quit the script
+	/* abort
+	 * Gracefully quit the script
+	 */
 	function abort($error) {
 		$print = "<html><head><title>Aborted</title></head>";
 		$print = $print."<body><h1>Page aborted</h1>";
@@ -9,6 +11,21 @@
 		$print = $print.$error;
 		$print = $print."</p></body></html>";
 		die($print);
+	}
+
+	/* hasVoted
+	 * Check if you have voted, based on session, cookies, and IP
+	 */
+	function hasVoted() {
+
+		if (isset($_SESSION['voteCompleted']))
+			return true;
+
+		$myip = 	$_SERVER['REMOTE_ADDR'];
+		if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) $myipf = 	$_SERVER['HTTP_X_FORWARDED_FOR'];
+		$sql = "SELECT `ip` FROM `IPtable` WHERE `ip` = $myip";
+
+		return false;
 	}
 
 	/* validURL

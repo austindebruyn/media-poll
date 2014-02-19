@@ -11,5 +11,7 @@ CREATE TABLE `votes` (
 	artisturl	VARCHAR(1024),
 
 	dAdded		DATE,
-	dLastvoted	DATE
+	dLastvoted	DATE,
+
+	tainted 	BOOLEAN DEFAULT FALSE
 );

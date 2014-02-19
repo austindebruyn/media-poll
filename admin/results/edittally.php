@@ -6,12 +6,12 @@
 	$v = $_POST['vid'];
 	$new = $_POST['new'];
 
-	$sql = "UPDATE `votes` SET `tally`=$new WHERE `vid`='$v'";
+	$sql = "UPDATE `votes` SET `tally`=$new, `tainted`=TRUE WHERE `vid`='$v'";
 
 	$result = $con->query($sql);
 
 	if (!$result)
-		$_SESSION['pageerror'] = "Something went wrong when I tried to delete that.";
+		$_SESSION['pageerror'] = "Something went wrong when I tried to update that.";
 
 	if (!$result) {
 		echo -1;
