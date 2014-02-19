@@ -1,0 +1,24 @@
+
+
+textarea {
+	resize: none;
+	width: 100%;
+}
+
+#desc-area {
+	width: 400px;
+	margin: 0 auto;
+}
+
+#desc-area #desc-update {
+	width: 200px;
+	font-size: 0.7em;
+	text-align: left;
+	opacity: 0;
+	transition: opacity 0.2s;
+	cursor: default;
+}
+
+#desc-area #desc-update:hover {
+	color: red;
+};
