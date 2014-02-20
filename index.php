@@ -19,12 +19,13 @@
 			//"AppleScript",
 			<?php
 				$list = getVideoNames();
+				$i = 0;
 				foreach ($list as $t) {
-					print '"'.$t[0].'", ';
+					print '"'.$t[0].'"';
+					if (!(++$i === count($list)))
+						print ', ';
 				}
 			?>
-
-			"Dicks"
 		];
 		$( ".autocomplete" ).autocomplete({
 			source: availableTags

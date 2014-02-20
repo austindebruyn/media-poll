@@ -25,3 +25,7 @@ CREATE TABLE `config` (
 
 	chk			 	BIT UNIQUE DEFAULT 1
 );
+
+CREATE TABLE `iptable` (
+	ip 			VARCHAR(45) PRIMARY KEY
+);

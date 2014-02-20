@@ -7,6 +7,15 @@ h1 {
 	font-size: 1.1em;
 }
 
+a {
+	color: #c4c8de;
+	text-decoration: none;
+}
+
+a:hover {
+	color: red;
+}
+
 .pageerror {
 	margin: 0 auto;
 	width: 500px;

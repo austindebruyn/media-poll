@@ -17,15 +17,37 @@
 	 * Check if you have voted, based on session, cookies, and IP
 	 */
 	function hasVoted() {
+		global $con;
 
 		if (isset($_SESSION['voteCompleted']))
 			return true;
 
-		$myip = 	$_SERVER['REMOTE_ADDR'];
-		if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) $myipf = $_SERVER['HTTP_X_FORWARDED_FOR'];
-		$sql = "SELECT `ip` FROM `IPtable` WHERE `ip` = $myip";
+		$myip = $_SERVER['REMOTE_ADDR'];
+		$sql = "SELECT `ip` FROM `iptable` WHERE `ip` = '$myip'";
 
+		if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+			$sql = $sql." OR `ip` = '".$_SERVER['HTTP_X_FORWARDED_FOR']."'";
+
+		$result = $con->query($sql);
+
+		if (!$result)
+			abort("Database error. (Did you break it?)");
+
+		if ($result->num_rows > 0) {
+			$_SESSION['voteCompleted'] = 'true';
+			return true;
+		}
 		return false;
+	}
+
+	/* logVote
+	 * Mark this user's IP as having voted
+	 */
+	function logVote() {
+		global $con;
+		$myip = 	$_SERVER['REMOTE_ADDR'];
+		$sql = "INSERT INTO `iptable` (`ip`) VALUES ('".$myip."')";
+		$con->query($sql);
 	}
 
 	/* validURL

@@ -46,6 +46,7 @@
 
 	//Mark this browser/IP/session as voted
 	$_SESSION['voteCompleted'] = TRUE;
+	logVote();
 
 	header("Location: /thanks");
 	exit();
