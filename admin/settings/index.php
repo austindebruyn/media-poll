@@ -21,21 +21,27 @@
 	More Settings
 
 	<div class="option" id="minvotes">
-		<select>
-	  		<option value="1">1</option>
-	  		<option value="2">2</option>
-	  		<option value="3">3</option>
-	  		<option value="4">4</option>
+		<select id="select-minvotes">
+	  		<?php
+	  			for ($i=1; $i<10; $i += 1)
+	  				if ($config->minVotes() == $i)
+	  					print('<option value="'.$i.'" selected="selected">'.$i."</option>");
+	  				else
+	  					print('<option value="'.$i.'">'.$i."</option>");
+	  		?>
 		</select>
 		Select minimum number of votes
 	</div>
 
 	<div class="option" id="maxvotes">
-		<select>
-	  		<option value="1">1</option>
-	  		<option value="2">2</option>
-	  		<option value="3">3</option>
-	  		<option value="4">4</option>
+		<select id="select-maxvotes">
+	  		<?php
+	  			for ($i=$config->minVotes(); $i<15; $i += 1)
+	  				if ($config->maxVotes() == $i)
+	  					print('<option value="'.$i.'" selected="selected">'.$i."</option>");
+	  				else
+	  					print('<option value="'.$i.'">'.$i."</option>");
+	  		?>
 		</select>
 		Select maximum number of votes
 	</div>
@@ -71,6 +77,18 @@
 		$("#forcemin").change( function() {
 				var update = ($('#forcemin').is(':checked') ? 1 : 0);
 				$.post("update.php?val=forcemin", {val: update});
+		});
+
+		$("#select-minvotes").change( function() {
+				var update = $("#select-minvotes").val();
+				$.post("update.php?val=minvotes", {val: update});
+				location.reload();
+		});
+
+		$("#select-maxvotes").change( function() {
+				var update = $("#select-maxvotes").val();
+				$.post("update.php?val=maxvotes", {val: update});
+				location.reload();
 		});
 
 	</script>
