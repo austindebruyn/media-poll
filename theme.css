@@ -23,6 +23,10 @@ a:hover {
 	font-family: 'Roboto Condensed', Arial, Tahoma;
 	background-color: #d73737;
 	color: #fefefb;
+	position: absolute;
+	top: 25px;
+	left: 50%;
+	margin-left: -250px;
 }
 
 #content {

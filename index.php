@@ -67,6 +67,8 @@
 
 		$( ".hidden" ).css("display", "none");
 
+		$( ".pageerror" ).fadeOut(2000);
+
 	});
 
 	function preload(arrayOfImages) {
@@ -109,7 +111,6 @@
 		<button class="button" type="button" id="more">+</button>
 		<button class="button" type="submit" form="ballot">Confirm Ballot</button>
 	</div>
-
 
 </div>
 
