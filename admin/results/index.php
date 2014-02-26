@@ -15,7 +15,6 @@
 	<h1>Current Tally Results</h1>
 	These are the votes as of <?php print(date('j F  Y h:i:s A')); ?><br><br>
 
-
 <?php
 	$sql = "SELECT * FROM votes ORDER BY tally DESC";
 	$result = $con->query($sql);

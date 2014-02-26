@@ -25,6 +25,8 @@ CREATE TABLE `config` (
 
 	chk			 	BIT UNIQUE DEFAULT 1,
 
+	enabled			BOOLEAN,
+
 	password 		VARCHAR(255)
 );
 

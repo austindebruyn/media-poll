@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	require_once '../includes/connect.php';
+	require_once '../includes/config.php';
+	require_once '../includes/forceopen.php';
 
 	if ($_SESSION['safetycheck'] !== "SAFE")
 		die("<h1>eror</h1>");

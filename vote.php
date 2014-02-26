@@ -2,6 +2,7 @@
 	session_start();
 	require_once 'includes/connect.php';
 	require_once 'includes/config.php';
+	require_once 'includes/forceopen.php';
 
 	//Make sure you aren't trying to double vote
 	if (hasVoted()) {

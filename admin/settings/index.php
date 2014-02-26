@@ -14,10 +14,17 @@
 <div id="content">
 	<a href="/admin/">&larr; Back</a>
 
-	<p>Main ballot description</p>
+	<p>Ballot description</p>
 	<div id='desc-area'>
 		<textarea rows='10' id='desc' name='desc'><?php print $config->rawdescription();?></textarea>
 		<div onclick="savedesc()" id='desc-update'>Click here to update</div>
+	</div>
+
+	<p>Vote Closure</p>
+
+	<div class="option" id="option">
+		<input type="checkbox" id="enable" value="enable" <? if ($config->enabled()) echo 'checked'; ?> >
+		Enable voting
 	</div>
 
 	<p>More Settings</p>
@@ -60,6 +67,7 @@
 	<?php if (hasVoted()) { ?>
 	<a href="update.php?val=ip"><button class="button" id="another">Log me out and give me another vote</button></a>
 	<? } ?>
+
 </div>
 
 <head>
@@ -99,6 +107,11 @@
 				var update = $("#select-maxvotes").val();
 				$.post("update.php?val=maxvotes", {val: update});
 				location.reload();
+		});
+
+		$("#enable").change( function() {
+				var update = ($('#enable').is(':checked') ? 1 : 0);
+				$.post("update.php?val=enable", {val: update});
 		});
 
 		$( ".button" ).button();
