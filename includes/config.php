@@ -21,6 +21,7 @@
 		function minVotes() 		{return $this->fetcher['minVotes']; }
 		function maxVotes() 		{return $this->fetcher['maxVotes']; }
 		function forceMin() 		{return $this->fetcher['forceMin']; }
+		function password() 		{return $this->fetcher['password']; }
 	}
 
 	$config = new Config();

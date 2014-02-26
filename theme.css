@@ -3,6 +3,11 @@ body {
 	background: url('/img/bg.png');
 }
 
+.padding {
+	height: 60px;
+	display: block;
+}
+
 h1 {
 	font-size: 1.1em;
 }
@@ -31,15 +36,22 @@ a:hover {
 
 #content {
 	position: relative;
-	min-height: 300px;
+	min-height: 140px;
 	color: #c4c8de;
-	top: 90px;
 	width: 590px;
 	margin: 0 auto;
 	padding: 32px 5px 32px 5px;
 	background: #232323 url('/img/content-top.png') repeat-x;
 	text-align: center;
 	font-family: 'Roboto Condensed', Arial, Tahoma;
+}
+
+#content a {
+	color: #99D0E9;
+}
+
+#content a:hover {
+	color: #E54C2B;
 }
 
 #content #description {
@@ -95,7 +107,7 @@ a:hover {
 #content input[type="submit"]:hover {
 	background: url('/img/submit_h.png');}
 
-#content .slot .button {
+#content .button {
 	font-family: 'Roboto Condensed', Arial, Tahoma;
 	height: 24px;
 	font-size: 0.8em;

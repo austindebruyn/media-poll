@@ -1,12 +1,15 @@
 <?php
+	require_once '../../includes/connect.php';
+	require_once '../../includes/config.php';
 	session_start();
+
 
 	$a = $_POST['pass'];
 
-	if ($a === "boob") {
+	if (password_verify($a, $config->password())) {
 		//You're in!
 		$_SESSION['auth'] = TRUE;
-		header("Location: /admin/results");
+		header("Location: /admin/");
 		exit();
 	} 
 

@@ -20,7 +20,9 @@
 	<div id="logged-in">
 		<h1>Administration</h1>
 
-		<a id="logout" href="logout">Logout</a>
+		<a href="results">View Results</a><br>
+		<a href="settings">Settings</a><br>
+		<a id="logout" href="logout">Logout</a><br>
 
 	</div>
 	<div id="logged-out">
@@ -34,12 +36,14 @@
 	<script type='text/javascript'>
 
  	$('#logout').click(function(e) { 
-		<?php session_destroy(); ?>
+		$.post("logout.php", {val: 4});
  		$('#logged-in').fadeOut(400, function() {
  			$('#logged-out').fadeIn(400);
- 		})
+ 		});
 		return false;
  	});
+
+	$( ".pageerror" ).fadeOut(2000);
 
 	</script>
 </head>

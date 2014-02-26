@@ -23,7 +23,9 @@ CREATE TABLE `config` (
 	maxVotes 		INT,
 	forceMin		BOOLEAN,
 
-	chk			 	BIT UNIQUE DEFAULT 1
+	chk			 	BIT UNIQUE DEFAULT 1,
+
+	password 		VARCHAR(255)
 );
 
 CREATE TABLE `iptable` (

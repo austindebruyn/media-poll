@@ -12,14 +12,15 @@
 <?php include('../../includes/messages.php'); ?>
 
 <div id="content">
+	<a href="/admin/">&larr; Back</a>
+
 	<p>Main ballot description</p>
 	<div id='desc-area'>
 		<textarea rows='10' id='desc' name='desc'><?php print $config->rawdescription();?></textarea>
 		<div onclick="savedesc()" id='desc-update'>Click here to update</div>
 	</div>
 
-	More Settings
-
+	<p>More Settings</p>
 	<div class="option" id="minvotes">
 		<select id="select-minvotes">
 	  		<?php
@@ -32,7 +33,6 @@
 		</select>
 		Select minimum number of votes
 	</div>
-
 	<div class="option" id="maxvotes">
 		<select id="select-maxvotes">
 	  		<?php
@@ -45,11 +45,21 @@
 		</select>
 		Select maximum number of votes
 	</div>
-
 	<div class="option" id="option">
 		<input type="checkbox" id="forcemin" value="forcemin" <? if ($config->forceMin()) echo 'checked'; ?> >
 		Force minimum vote
 	</div>
+
+	<p>Security</p>
+	<form action="update.php?val=pass" method="post">
+		<input type="password" name="pass" value="">&nbsp;&nbsp;
+		<button class="button" type="submit">Change admin pass</button>
+	</form>
+
+	<br>
+	<?php if (hasVoted()) { ?>
+	<a href="update.php?val=ip"><button class="button" id="another">Log me out and give me another vote</button></a>
+	<? } ?>
 </div>
 
 <head>
@@ -90,6 +100,8 @@
 				$.post("update.php?val=maxvotes", {val: update});
 				location.reload();
 		});
+
+		$( ".button" ).button();
 
 	</script>
 </head>
