@@ -3,6 +3,15 @@ body {
 	background: url('/img/bg.png');
 }
 
+a {
+	color: #99D0E9;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #E54C2B;
+}
+
 .padding {
 	height: 60px;
 	display: block;
@@ -12,14 +21,6 @@ h1 {
 	font-size: 1.1em;
 }
 
-a {
-	color: #c4c8de;
-	text-decoration: none;
-}
-
-a:hover {
-	color: red;
-}
 
 .pageerror {
 	margin: 0 auto;
@@ -44,14 +45,6 @@ a:hover {
 	background: #232323 url('/img/content-top.png') repeat-x;
 	text-align: center;
 	font-family: 'Roboto Condensed', Arial, Tahoma;
-}
-
-#content a {
-	color: #99D0E9;
-}
-
-#content a:hover {
-	color: #E54C2B;
 }
 
 #content #description {

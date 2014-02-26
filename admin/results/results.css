@@ -1,3 +1,4 @@
+
 #results {
 	width: 800px;
 	color: #c4c8de;
@@ -12,14 +13,17 @@
 	background: #232323 url('/img/content-top.png') repeat-x;
 	font-family: 'Roboto Condensed', Arial, Tahoma;
 }
+
+#results p {
+	text-align: center;
 }
 
-#results a {
+#results .vid a {
 	text-decoration: none;
 	color: white;
 }
 
-#results a:hover {
+#results .vid a:hover {
 	color: red;
 }
 
