@@ -42,20 +42,24 @@
 			}
 		);
 
+		var minVotes, maxVotes;
+		minVotes = <?php echo $config->minVotes() ?>;
+		maxVotes = <?php echo $config->maxVotes() ?>;
+
 		$( "#more" ).click( function() {
 			$("button.hidden").first().fadeIn(200).removeClass("hidden");
 			$(".hidden").first().fadeIn(200).removeClass("hidden");
 
-			if ($("#ballot .slot").not(".hidden").length >= 10 )
+			if ($("#ballot .slot").not(".hidden").length >= maxVotes )
 				$("#more").fadeOut(200).addClass("hidden");
 		});
 
 		$( "#less" ).click( function() {
 			$("button.hidden").first().fadeIn(200).removeClass("hidden");
-			if ($("#ballot .slot").not(".hidden").length > 5 )
+			if ($("#ballot .slot").not(".hidden").length > minVotes )
 			$("#ballot .slot").not(".hidden").last().fadeOut(200).addClass("hidden");
 
-			if ($("#ballot .slot").not(".hidden").length <= 5 )
+			if ($("#ballot .slot").not(".hidden").length <= minVotes )
 				$("#less").fadeOut(200).addClass("hidden");
 		});
 

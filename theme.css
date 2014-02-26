@@ -97,3 +97,16 @@ a:hover {
 	font-size: 0.8em;
 	padding: .1em .1em;
 }
+
+#content .option {
+	width: 320px;
+	text-align: center;
+	margin: 5px auto 5px auto;
+	padding: 3px;
+	font-size: 0.8em;
+	color: #82A5A9;
+}
+
+#content .option input[type='checkbox'] {
+	height: 0.8em;
+}

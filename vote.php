@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	require_once 'includes/connect.php';
+	require_once 'includes/config.php';
 
 	//Make sure you aren't trying to double vote
 	if (hasVoted()) {
@@ -9,30 +10,26 @@
 	}
 
 
-	$url = array("", "", "", "", "");
+	$url = array();
+	array_pad($url, $config->maxVotes(), "");
 
-	for ($i=1; $i<=5; $i+=1)
+	for ($i=1; $i<=$config->maxVotes(); $i+=1)
 		$_SESSION['text'.$i] = $_POST['url'.$i];
 
 
 	$i = 0;
 
-	if (isset($_POST['url1']) && strlen($_POST['url1']) > 0) {$url[$i] = $_POST['url1']; $i += 1;}
-	if (isset($_POST['url2']) && strlen($_POST['url2']) > 0) {$url[$i] = $_POST['url2']; $i += 1;}
-	if (isset($_POST['url3']) && strlen($_POST['url3']) > 0) {$url[$i] = $_POST['url3']; $i += 1;}
-	if (isset($_POST['url4']) && strlen($_POST['url4']) > 0) {$url[$i] = $_POST['url4']; $i += 1;}
-	if (isset($_POST['url5']) && strlen($_POST['url5']) > 0) {$url[$i] = $_POST['url5']; $i += 1;}
+	for ($j=1; $j<$config->maxVotes(); $j+=1)	
+		if (isset($_POST['url'.$j]) && strlen($_POST['url'.$j]) > 0) {$url[$i] = $_POST['url'.$j]; $i += 1;}
 
 	$totalvotes = $i;
 
 	//Force 5-vote rule
-	/*
-	if ($totalvotes < 5) {
-		$_SESSION['pageerror'] = "You need to vote for 5 videos.";
+	if ($config->forceMin() && $totalvotes < $config->minVotes()) {
+		$_SESSION['pageerror'] = "You need to vote for at least ".$config->minVotes()." videos.";
 		header("Location: /");
 		exit();
 	}
-	*/
 
 	//More error checking
 	if ($totalvotes < 1) {

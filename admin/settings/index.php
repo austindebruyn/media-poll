@@ -19,6 +19,31 @@
 	</div>
 
 	More Settings
+
+	<div class="option" id="minvotes">
+		<select>
+	  		<option value="1">1</option>
+	  		<option value="2">2</option>
+	  		<option value="3">3</option>
+	  		<option value="4">4</option>
+		</select>
+		Select minimum number of votes
+	</div>
+
+	<div class="option" id="maxvotes">
+		<select>
+	  		<option value="1">1</option>
+	  		<option value="2">2</option>
+	  		<option value="3">3</option>
+	  		<option value="4">4</option>
+		</select>
+		Select maximum number of votes
+	</div>
+
+	<div class="option" id="option">
+		<input type="checkbox" id="forcemin" value="forcemin" <? if ($config->forceMin()) echo 'checked'; ?> >
+		Force minimum vote
+	</div>
 </div>
 
 <head>
@@ -32,7 +57,7 @@
 				
 				$("#desc-update").css('opacity', 0).css('cursor', 'default');
 				var update = $('textarea#desc').val();
-				$.post("updatedesc.php", {desc: update});
+				$.post("update.php?val=desc", {desc: update});
 		}}
 
 		$(document).keydown(function(event) {
@@ -42,6 +67,11 @@
 		    	event.preventDefault();
 		    	return false;
 		}});
+
+		$("#forcemin").change( function() {
+				var update = ($('#forcemin').is(':checked') ? 1 : 0);
+				$.post("update.php?val=forcemin", {val: update});
+		});
 
 	</script>
 </head>
