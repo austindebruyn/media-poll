@@ -58,6 +58,12 @@ a:hover {
 	font-family: 'Roboto Condensed', Arial, Tahoma;
 }
 
+#content .slot {
+	width: 320px;
+	text-align: center;
+	margin: 0 auto;
+}
+
 #content .autocomplete {
 	width: 320px;
 	height: 20px;
@@ -84,3 +90,10 @@ a:hover {
 
 #content input[type="submit"]:hover {
 	background: url('/img/submit_h.png');}
+
+#content .slot .button {
+	font-family: 'Roboto Condensed', Arial, Tahoma;
+	height: 24px;
+	font-size: 0.8em;
+	padding: .1em .1em;
+}

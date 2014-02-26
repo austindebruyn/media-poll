@@ -27,10 +27,51 @@
 				}
 			?>
 		];
+
 		$( ".autocomplete" ).autocomplete({
 			source: availableTags
 		});
+
+		// Hover states on the static widgets
+		$( "#dialog-link, li.ui-state-default" ).hover(
+			function() {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function() {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+
+		$( "#more" ).click( function() {
+			$("button.hidden").first().fadeIn(200).removeClass("hidden");
+			$(".hidden").first().fadeIn(200).removeClass("hidden");
+
+			if ($("#ballot .slot").not(".hidden").length >= 10 )
+				$("#more").fadeOut(200).addClass("hidden");
+		});
+
+		$( "#less" ).click( function() {
+			$("button.hidden").first().fadeIn(200).removeClass("hidden");
+			if ($("#ballot .slot").not(".hidden").length > 5 )
+			$("#ballot .slot").not(".hidden").last().fadeOut(200).addClass("hidden");
+
+			if ($("#ballot .slot").not(".hidden").length <= 5 )
+				$("#less").fadeOut(200).addClass("hidden");
+		});
+
+		$( ".button" ).button();
+
+		$( ".hidden" ).css("display", "none");
+
 	});
+
+	function preload(arrayOfImages) {
+	    $(arrayOfImages).each(function() {
+	        (new Image()).src = this;
+    })};
+
+	preload(['/img/submit_h.png']);
+
 	</script>
 </head>
 
@@ -42,19 +83,30 @@
 
 	</div>
 
-	<form action="vote.php" method="post">
+	<form action="vote.php" method="post" id="ballot">
 		<?php
-			for ($i=0; $i<5; $i+=1) {
-				print("<input class='autocomplete' title='type &quot;a&quot;'");
-				if (isset($_SESSION['text'.($i+1)]))
+			for ($i=0; $i<$config->maxVotes(); $i+=1) { ?>
+				<div 	class=<?php echo '"slot ';
+									if ($i >= $config->minVotes())
+										echo 'hidden';
+									echo '"';
+								?> >
+				<input class='autocomplete' title='Paste a YouTube URL or video name.' 
+				<? if (isset($_SESSION['text'.($i+1)]))
 					print("value='".$_SESSION['text'.($i+1)]."'" );
-				print("name='url".($i+1)."'><br>");
-
+				print("name='url".($i+1)."'></div>");
 			}
 		?>
-		<input type="submit" value="">
-
 	</form>
+
+	<br>
+	<div class="slot submits">
+		<button class="button hidden" type="button" id="less">-</button>
+		<button class="button" type="button" id="more">+</button>
+		<button class="button" type="submit" form="ballot">Confirm Ballot</button>
+	</div>
+
+
 </div>
 
 <?php require_once 'includes/footer.php'; ?>
