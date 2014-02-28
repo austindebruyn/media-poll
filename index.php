@@ -99,8 +99,11 @@
 									echo '"';
 								?> >
 				<input class='autocomplete' title='Paste a YouTube URL or video name.' 
-				<? if (isset($_SESSION['text'.($i+1)]))
-					print("value='".$_SESSION['text'.($i+1)]."'" );
+				<? 	if (isset($_SESSION['text'.($i+1)]))
+						print('value="'.$_SESSION['text'.($i+1)].'" ' );
+			 		if (isset($_SESSION['highlight']))
+			 			if (in_array($i, $_SESSION['highlight']))
+							print("class='autocomplete highlight' " );
 				print("name='url".($i+1)."'></div>");
 			}
 		?>

@@ -56,7 +56,8 @@
 	?>
 	</div>
 
-	<a href="/finalvote.php"><button class="button" type="button">YES these are correct</button></a><br>
+	<br>
+	<a href="/finalvote.php"><button class="button" type="button">YES these are correct</button></a>
 	<a href="/"><button class="button" type="button">GO BACK and edit my ballot</button></a><br>
 </div>
 
