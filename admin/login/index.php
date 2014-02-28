@@ -7,7 +7,7 @@
 	<script type='text/javascript'>
 	$(function() {
 		$( ".button" ).button();
-		$( ".pageerror" ).fadeOut(2000);
+		$( ".pageerror" ).delay(1500).fadeOut(2000);
 	});
 	</script>
 </head>

@@ -68,7 +68,7 @@
 
 		$( ".hidden" ).css("display", "none");
 
-		$( ".pageerror" ).fadeOut(2000);
+		$( ".pageerror" ).delay(1500).fadeOut(2000);
 
 	});
 

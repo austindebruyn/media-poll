@@ -25,6 +25,8 @@
 
 	$totalvotes = $i;
 
+
+
 	//Force 5-vote rule
 	if ($config->forceMin() && $totalvotes < $config->minVotes()) {
 		$_SESSION['pageerror'] = "You need to vote for at least ".$config->minVotes()." videos.";
@@ -73,11 +75,22 @@
 	}
 
 	//Make sure all were valid links
-	for ($i=0; $i<$totalvotes; $i+=1)
+	for ($i=0; $i<$totalvotes; $i+=1) {
+
+		//Not a youtube?
 		if (strlen($vid[$i]) != 11) {
-		$_SESSION['pageerror'] = "Invalid URL: ".$url[$i];
-		header("Location: /");
-		exit();
+			$_SESSION['pageerror'] = "Invalid URL: ".$url[$i];
+			header("Location: /");
+			exit();
+		}
+
+		//Duplicate link?
+		for ($j = $i+1; $j<$totalvotes; $j+=1)
+			if ($vid[$i] == $vid[$j]) {
+			$_SESSION['pageerror'] = "You can't vote for something twice!";
+			header("Location: /");
+			exit();
+		}
 	}
 
 	//Fetch some data via cURL
