@@ -19,13 +19,19 @@
 			margin: 2px;
 		}
 	</style>
+	<script type='text/javascript'>
+		$(function() {
 
+
+			$( ".button" ).button();
+	});
+	</script>
 </head>
 
 <?php include('../includes/messages.php'); ?>
 
 <div id="content">
-	<p>Confirm your ballot</p>
+	<h1>Confirm your ballot</h1>
 
 	<?php
 		$totalvotes = $_SESSION['totalvotes'];
@@ -41,16 +47,17 @@
 	<strong>YOUR BALLOT</strong> contains <?php echo $totalvotes; ?> videos<br>
 	</p>
 
-	<p style="text-decoration: italic;">
+	<div id="confirm-ballot">
 	<?php
 		for ($i=0; $i<$totalvotes; $i+=1) {
-			print($_SESSION['ballotData'][$i]['title']." by ".$_SESSION['ballotData'][$i]['artist']."<br>");
+			print("<div class='item'>".$_SESSION['ballotData'][$i]['title']);
+			print(" - ".$_SESSION['ballotData'][$i]['artist']."</div>");
 		}
 	?>
-	</p>
+	</div>
 
-	<a href='/finalvote.php'>YES this ballot is correct</a><br>
-	<a href="/">GO BACK and edit my ballot</a>
+	<a href="/finalvote.php"><button class="button" type="button">YES these are correct</button></a><br>
+	<a href="/"><button class="button" type="button">GO BACK and edit my ballot</button></a><br>
 </div>
 
 <?php require_once '../includes/footer.php'; ?>

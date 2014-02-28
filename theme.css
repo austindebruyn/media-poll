@@ -21,6 +21,23 @@ h1 {
 	font-size: 1.1em;
 }
 
+button {
+	margin-top: 7px;
+}
+
+#content #confirm-ballot {
+	font-size: 0.8em;
+}
+
+#content #confirm-ballot .item {
+	width: 80%;
+	height: 1.5em;
+	margin: 2px auto 1px auto;
+
+	background-color: #2A3946;
+	border-radius: 1px;
+	overflow: hidden;
+}
 
 .pageerror {
 	margin: 0 auto;
