@@ -80,11 +80,17 @@
 		//Not a youtube?
 		if (strlen($vid[$i]) != 11) {
 			$_SESSION['pageerror'] = "Invalid URL: ".$url[$i];
-			$_SESSION['highlight'] = array($i);
 			header("Location: /");
 			exit();
 		}
 
+		//Duplicate link?
+		for ($j = $i+1; $j<$totalvotes; $j+=1)
+			if ($vid[$i] == $vid[$j]) {
+			$_SESSION['pageerror'] = "You can't vote for something twice!";
+			header("Location: /");
+			exit();
+		}
 	}
 
 	//Fetch some data via cURL
