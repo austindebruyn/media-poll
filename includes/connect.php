@@ -2,9 +2,7 @@
 	require_once 'functions.php';
 
 	//Connect to the database
-	$host = "alllevelsatoncecom.domaincommysql.com";
-	$user = "austin";
-	$pass = "j8!cm3)_A";
+
 
 $host = "localhost";
 $user = "root";
