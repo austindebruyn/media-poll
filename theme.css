@@ -119,6 +119,7 @@ button {
 
 #content .button {
 	font-family: 'Roboto Condensed', Arial, Tahoma;
+	font-weight: normal;
 	height: 24px;
 	font-size: 0.8em;
 	padding: .1em .1em;

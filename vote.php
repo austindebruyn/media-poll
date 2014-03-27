@@ -20,7 +20,7 @@
 
 	$i = 0;
 
-	for ($j=1; $j<$config->maxVotes(); $j+=1)	
+	for ($j=1; $j<=$config->maxVotes(); $j+=1)	
 		if (isset($_POST['url'.$j]) && strlen($_POST['url'.$j]) > 0) {$url[$i] = $_POST['url'.$j]; $i += 1;}
 
 	$totalvotes = $i;
@@ -91,6 +91,25 @@
 			header("Location: /");
 			exit();
 		}
+
+	}
+
+	//Check if any of these videos are banned?
+	$sql = "SELECT * FROM `votes` WHERE `banned` = b'1' AND (`vid`='".$vid[0]."'";
+	for ($i=0; $i < $totalvotes; $i+=1)
+		$sql = $sql." OR `vid` = '".$vid[$i]."'";
+	$sql = $sql.")";
+	$result = $con->query($sql);
+
+	if ($result)
+	if ($result->num_rows > 0) {
+		$text = "These videos are banned: ";
+		while ($fetcher = $result->fetch_assoc())
+			$text = $text.($fetcher['name'])." ";
+
+		$_SESSION['pageerror'] = $text;
+		header("Location: /");
+		exit();
 	}
 
 	//Fetch some data via cURL
@@ -109,7 +128,7 @@
 
 		if (!$result) {
 			//This was an invalid YouTube vid
-			$_SESSION['pageerror'] = "Invalid youtube vid: ".$vid[$i];
+			$_SESSION['pageerror'] = "YouTube reported and error on video ".$vid[$i];
 			header("Location: /");
 			exit();
 			break;

@@ -13,7 +13,8 @@ CREATE TABLE `votes` (
 	dAdded		DATE,
 	dLastvoted	DATE,
 
-	tainted 	BOOLEAN DEFAULT FALSE
+	tainted 	BOOLEAN DEFAULT FALSE,
+	banned 		BIT(1) NOT NULL DEFAULT b'0'
 );
 
 CREATE TABLE `config` (

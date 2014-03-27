@@ -11,12 +11,20 @@
 <?php include('../../includes/messages.php'); ?>
 
 <div id="results">
+<?php
+	$sql = "SELECT COUNT(`ip`) FROM iptable WHERE TRUE;";
+	$result = $con->query($sql);
+	$fetcher = $result->fetch_array();
+
+	$count = $fetcher[0];
+?>
 	<p><a href="/admin/">&larr; Back</a></p>
 	<h1>Current Tally Results</h1>
-	These are the votes as of <?php print(date('j F  Y h:i:s A')); ?><br><br>
+	These are the votes as of <?php print(date('j F  Y h:i:s A')); ?><br>
+	<?php if ($count == 1) print($count.' person has '); else print($count.' people have '); ?>cast their ballots.<br><br>
 
 <?php
-	$sql = "SELECT * FROM votes ORDER BY tally DESC";
+	$sql = "SELECT * FROM votes WHERE `banned` = b'0' AND `tally` > 0 ORDER BY tally DESC";
 	$result = $con->query($sql);
 
 	$i = 1;
@@ -25,13 +33,13 @@
 		print("<div class='vid'>");
 			print("<div class='thumb'><img src='".$row['bigthumb']."' /></div>");
 			print("<div class='text'>");
-				print("<div class='cdiv'><strong><a class='title' vid='".$row['vid']."' href='http://youtube.com/watch?v=".$row['vid'].
+				print("<div class='cdiv'><a class='title' vid='".$row['vid']."' href='http://youtube.com/watch?v=".$row['vid'].
 					"''>");
-				print($row['name']."</strong></a><br>");
+				print($row['name']."</a><br>");
 				print("".$row['artist']."</div>");
 
 				print("<div class='rdiv'>");
-					print("<strong>#$i</strong><br>");
+					print("#$i<br>");
 					print("".$row['tally']." votes<br>");
 				if ($row['tainted'])
 					print("<img title='This tally was edited by hand.' src='/img/fugue/skull.png'/>");

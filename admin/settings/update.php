@@ -4,6 +4,7 @@
 	switch ($_GET['val']) {
 		case 'desc':
 			$d = $_POST['desc'];
+			$d = $con->escape_string($d);
 			$sql = "UPDATE `config` SET `description`='$d' WHERE `chk`=1";
 			$con->query($sql);
 			break;

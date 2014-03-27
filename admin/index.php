@@ -22,6 +22,7 @@
 
 		<a href="results">View Results</a><br>
 		<a href="settings">Settings</a><br>
+		<a href="banned">Banned Videos</a><br>
 		<a id="logout" href="logout">Logout</a><br>
 
 	</div>

@@ -76,7 +76,7 @@
 	function getVideoNames() {
 		global $con;
 
-		$sql = "SELECT `name`, `vid` FROM `votes`";
+		$sql = "SELECT `name`, `vid` FROM `votes` WHERE `banned` = b'0' AND `tally` > 0 LIMIT 70";
 		$result = $con->query($sql);
 		$list = array();
 		while ($fetcher = $result->fetch_row())
